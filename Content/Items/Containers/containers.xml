@@ -12,7 +12,7 @@
         <Item identifier="steel" amount="2" />
         <Item identifier="lead" amount="2" />
       </Fabricate>
-      <Sprite texture="%ModDir%/Content/Items/Containers/ShieldedCrate.png" depth="0.54" sourcerect="0,0,146,82" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" depth="0.54" sourcerect="0,210,146,82" origin="0.5,0.5" />
       <Body width="144" height="80" density="25" />
       <Holdable slots="RightHand,LeftHand" holdpos="0,-30" handle1="0,-30" aimable="false" msg="ItemMsgPickUpSelect" />
       <ItemContainer capacity="9" canbeselected="false" hideitems="true" keepopenwhenequipped="true" movableframe="true">
@@ -38,8 +38,8 @@
         <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
         <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="4" />
       </Price>
-      <InventoryIcon texture="%ModDir%/Content/Items/Containers/ShieldedContainer.png" sourcerect="0,0,84,71" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Containers/ShieldedContainer.png" sourcerect="0,0,84,71" origin="0.5,0.5" depth="0.6" />
+      <InventoryIcon texture="%ModDir%/Content/spritesheet.png" sourcerect="0,291,84,71" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="0,291,84,71" origin="0.5,0.5" depth="0.6" />
       <Body width="82" height="70" density="20" />
       <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
         <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
@@ -60,9 +60,8 @@
   </Override>
   <Override>
     <Item name="Fuel Rod Crate" identifier="fuelrodcrate" tags="smallcrate,fuelrodcrate,fuelrodcontainer,containradiation,depthchargeammo" description="Safely stores up to 8 fuel rods and prevents them from irradiating the surroundings." maxstacksize="1" scale="0.5" impactsoundtag="impact_metal_heavy">
-      <BrokenSprite texture="%ModDir%/Content/Items/Containers/NuclearCrate.png" sourcerect="95,0,95,114" depth="0.54" origin="0.5,0.66" maxcondition="50" fadein="false" />
-      <!--<DecorativeSprite texture="%ModDir%/Content/Items/Containers/NuclearCrate.png" sourcerect="95,52,95,62" depth="0.54" origin="0.5,0.55" />-->
-      <Sprite texture="%ModDir%/Content/Items/Containers/NuclearCrate.png" sourcerect="0,0,95,78" depth="0.54" origin="0.5,0.5" />
+      <BrokenSprite texture="%ModDir%/Content/spritesheet.png" sourcerect="95,95,95,114" depth="0.54" origin="0.5,0.66" maxcondition="50" fadein="false" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="0,95,95,78" depth="0.54" origin="0.5,0.5" />
       <PreferredContainer primary="fuelcratecontainer" secondary="coilgunammoloader,ammoboxcontainer" />
       <PreferredContainer secondary="wreckammoboxcontainer" amount="1" spawnprobability="0.2" />
       <Body width="90" height="72" density="25" />
@@ -109,7 +108,7 @@
   </Override>
   <Override>
     <Item name="Fuel Rod Crate Shelf" identifier="fuelrodcrateshelf" tags="container,fuelcratecontainer" description="Can hold up to 2 fuel rod crates." linkable="true" pickdistance="150" waterproof="true" scale="0.5" isshootable="true" requireaimtouse="true" impactsoundtag="impact_metal_heavy">
-      <Sprite texture="%ModDir%/Content/Items/Containers/NuclearCrateShelf.png" depth="0.785" sourcerect="0,0,119,260" canflipx="false" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" depth="0.785" sourcerect="190,95,119,260" canflipx="false" origin="0.5,0.5" />
       <Body width="117" height="258" density="40" />
       <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" amount="1">
         <RequiredSkill identifier="mechanical" level="35" />
@@ -131,32 +130,4 @@
       </ItemContainer>
     </Item>
   </Override>
-  <!--
-  <Override>
-    <Item name="" identifier="fuelrodcratespawner" Category="Hidden" Tags="smallitem" maxstacksize="1" cargocontaineridentifier="metalcrate" scale="0.5" spritecolor="255,255,255,0" noninteractable="true" hideinmenus="true">
-      <PrefferedContainer primary="reactorcab" amount="1" spawnprobability="1" />
-      <Sprite texture="Content/Items/Tools/tools.png" depth="0.55" sourcerect="0,0,1,1" />
-      <Body radius="1" density="10" />
-      <Holdable handle1="0,0" slots="Any" msg="ItemMsgPickUpSelect">
-        <StatusEffect type="Always" target="This" oneshot="true">
-          <SpawnItem identifier="fuelrodcrate" spawnposition="This" SpawnIfInventoryFull="true" SpawnIfCantBecontained="true" />
-          <Remove />
-        </StatusEffect>
-      </Holdable>
-    </Item>
-  </Override>
-  <Override>
-    <Item name="" identifier="fuelrodcrateshelfspawner" Category="Hidden" Tags="smallitem" maxstacksize="1" cargocontaineridentifier="metalcrate" scale="0.5" spritecolor="255,255,255,0" noninteractable="true" hideinmenus="true">
-      <PreferredContainer primary="reactorcab" amount="1" spawnprobability="1" />
-      <Sprite texture="Content/Items/Tools/tools.png" depth="0.55" sourcerect="0,0,1,1" />
-      <Body radius="1" density="10" />
-      <Holdable handle1="0,0" slots="Any" msg="ItemMsgPickUpSelect">
-        <StatusEffect type="Always" target="This" oneshot="true">
-          <SpawnItem identifier="fuelrodcrateshelf" spawnposition="This" SpawnIfInventoryFull="true" SpawnIfCantBecontained="true" />
-          <Remove />
-        </StatusEffect>
-      </Holdable>
-    </Item>
-  </Override>
-  -->
 </Items>

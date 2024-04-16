@@ -191,7 +191,7 @@
           <ParticleEmitter particle="waterdrop" colormultiplier="255,255,255" copyentityangle="true" particlespersecond="3" anglemin="0" anglemax="360" distancemin="0" distancemax="15" scalemin="0.4" scalemax="0.8" velocitymin="0" velocitymax="10" highqualitycollisiondetection="false" />
         </StatusEffect>
       </Effect>
-      <icon texture="%ModDir%/Content/UI/OverheatingIcon.png" sourcerect="0,0,128,128" color="195,104,60,255" origin="0,0" />
+      <icon texture="%ModDir%/Content/spritesheet.png" sourcerect="309,95,128,128" color="195,104,60,255" origin="0,0" />
     </Affliction>
   </Override>
   <Override>
@@ -229,7 +229,7 @@
       <Effect minstrength="0" maxstrength="300" strengthchange="-1.0" resistancefor="radiationsickness,contaminated" minresistance="0.35" maxresistance="0.50" />
       <Effect minstrength="300" maxstrength="600" strengthchange="-1.0" resistancefor="radiationsickness,contaminated" minresistance="0.50" maxresistance="0.50" />
       <Effect minstrength="600" maxstrength="900" strengthchange="-1.0" resistancefor="radiationsickness,contaminated" minresistance="0.50" maxresistance="0.50" />
-      <icon texture="%ModDir%/Content/UI/RadiationResistanceIcon.png" sourcerect="0,0,115,123" color="10,193,114,255" origin="0,0" />
+      <icon texture="%ModDir%/Content/spritesheet.png" sourcerect="309,223,115,123" color="10,193,114,255" origin="0,0" />
     </Affliction>
   </Override>
   <Override>

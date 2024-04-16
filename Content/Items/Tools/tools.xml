@@ -125,8 +125,8 @@
         <RequiredItem identifier="plastic" amount="1" />
         <RequiredItem tag="mobilebattery" amount="1" />
       </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/Tools/GeigerCounter.png" sourcerect="0,0,61,52" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Tools/GeigerCounter.png" sourcerect="62,25,64,27" depth="0.55" />
+      <InventoryIcon texture="%ModDir%/Content/spritesheet.png" sourcerect="330,0,61,52" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="392,25,64,27" depth="0.6" origin="0.5,0.5" />
       <Body width="64" height="24" density="30" />
       <GreaterComponent allowingameediting="false" timeframe="0" />
       <MeleeWeapon reload="1" slots="Any,RightHand,LeftHand" holdpos="25,35" handle1="10,-4" holdangle="260" aimpos="25,-45" aimangle="260" aimable="true" msg="ItemMsgPickUpSelect">
@@ -165,8 +165,8 @@
     <Item name="Fuel Rod Tongs" identifier="fuelrodtongs" Category="Equipment" Tags="smallitem,tongs" description="Required to move active fuel rods around without burning your hands in the process. Can be stored in a toolbelt." maxstacksize="1" cargocontaineridentifier="metalcrate" scale="0.5" spritecolor="255,255,255,255" impactsoundtag="impact_metal_light">
       <PreferredContainer primary="reactorcab" amount="1" spawnprobability="1" />
       <PreferredContainer secondary="wreckreactorcab,abandonedreactorcab" minamount="1" maxamount="2" spawnprobability="0.3" />
-      <InventoryIcon texture="%ModDir%/Content/Items/Tools/RodTongs.png" sourcerect="0,0,94,94" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Tools/RodTongs.png" sourcerect="94,77,94,17" depth="0.55" origin="0.5,0.2" />
+      <InventoryIcon texture="%ModDir%/Content/spritesheet.png" sourcerect="0,361,94,94" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="94,438,94,17" depth="0.6" origin="0.5,0.2" />
       <Body width="92" height="15" density="25" />
       <Price baseprice="160">
         <Price storeidentifier="merchantoutpost" multiplier="0.9" minavailable="1" />

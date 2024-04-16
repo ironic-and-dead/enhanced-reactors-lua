@@ -34,8 +34,8 @@
       </Fabricate>
       <Deconstruct time="2" />
       <SuitableTreatment type="contaminated" suitability="10" />
-      <InventoryIcon texture="%ModDir%/Content/Items/Medical/IodideTablets.png" sourcerect="0,0,94,94" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Medical/IodideTablets.png" sourcerect="95,46,25,49" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="%ModDir%/Content/spritesheet.png" sourcerect="0,0,94,94" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="95,46,25,49" depth="0.6" origin="0.5,0.5" />
       <Body width="24" height="48" density="10.05" />
       <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="26,22" holdpos="30,-15" holdangle="0" handle1="0,-5" aimangle="105" aimable="false" swingwhenusing="true" swingamount="3,9" swingspeed="1.0" msg="ItemMsgPickUpSelect" />
       <RangedWeapon reload="2.0" HitOnlyCharacters="true">
@@ -91,8 +91,8 @@
       <SuitableTreatment type="poison" suitability="15" />
       <SuitableTreatment identifier="radiationsickness" suitability="15" />
       <SuitableTreatment identifier="trackcarbonintake" suitability="-50.5" />
-      <InventoryIcon texture="%ModDir%/Content/Items/Medical/CarbonTablets.png" sourcerect="0,0,94,94" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Medical/CarbonTablets.png" sourcerect="95,46,25,49" depth="0.6" origin="0.5,0.5" />
+      <InventoryIcon texture="%ModDir%/Content/spritesheet.png" sourcerect="120,0,94,94" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="311,46,25,49" depth="0.6" origin="0.5,0.5" />
       <Body width="24" height="48" density="10.05" />
       <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="26,22" holdpos="30,-15" holdangle="0" handle1="0,-5" aimangle="105" aimable="false" swingwhenusing="true" swingamount="3,9" swingspeed="1.0" msg="ItemMsgPickUpSelect" />
       <RangedWeapon reload="2.0" HitOnlyCharacters="true">
@@ -223,8 +223,8 @@
         <RequiredItem identifier="potassium" amount="1" />
         <RequiredItem identifier="sodium" amount="1" />
       </Fabricate>
-      <InventoryIcon texture="%ModDir%/Content/Items/Medical/Deconsol.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
-      <Sprite texture="%ModDir%/Content/Items/Medical/Deconsol.png" sourcerect="65,0,24,63" depth="0.55" />
+      <InventoryIcon texture="%ModDir%/Content/spritesheet.png" sourcerect="240,0,64,64" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/spritesheet.png" sourcerect="305,0,24,63" depth="0.6" origin="0.5,0.5" />
       <Body width="20" height="62" density="9.7" />
       <Holdable canbecombined="true" slots="Any,RightHand,LeftHand" holdpos="30,-15" handle1="0,5" handle2="0,-5" msg="ItemMsgPickUpSelect">
         <StatusEffect type="OnFire" target="This" Condition="-10.0" tags="onfire" duration="1" stackable="false" />
