@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="English" nowhitespace="false" translatedname="English">
+  <!-- Display Names -->
+  <displayname.uraniumbased>[itemname] (Uranium)</displayname.uraniumbased>
+  <displayname.thoriumbased>[itemname] (Thorium)</displayname.thoriumbased>
+  <displayname.fulguriumbased>[itemname] (Fulgurium)</displayname.fulguriumbased>
+  <displayname.volatilefulguriumbased>[itemname] (Volatile Fulgurium)</displayname.volatilefulguriumbased>
+  <!-- Items -->
+  <entityname.deconshower>Decontamination Shower</entityname.deconshower>
+  <entitydescription.deconshower>Decontaminates the user and automatically shuts off when the user is fully decontaminated. Requires Deconsol to decontaminate.</entitydescription.deconshower>
+  <entityname.hazmatsuit1>Hazmat Suit</entityname.hazmatsuit1>
+  <entitydescription.hazmatsuit1>- Mandatory equipment when handling fuel rods.\n- Requires an oxygen tank.\n- Does not protect from pressure.</entitydescription.hazmatsuit1>
+  <entityname.hazmatsuit2>Hazmat Suit (Pressure Resistant)</entityname.hazmatsuit2>
+  <entitydescription.hazmatsuit2>A modified hazmat suit.\nIt has been adjusted to protect against water pressure up to a depth of 10000m at the cost of some of its radiation shielding.</entitydescription.hazmatsuit2>
+  <entityname.fuelrodtongs>Fuel Rod Tongs</entityname.fuelrodtongs>
+  <entitydescription.fuelrodtongs>Required to move active fuel rods around without burning your hands in the process. Can be stored in a toolbelt.</entitydescription.fuelrodtongs>
+  <entityname.geigercounter>Geiger Counter</entityname.geigercounter>
+  <entitydescription.geigercounter>Allows you to detect radiation. Can be used on characters.</entitydescription.geigercounter>
+  <entityname.fuelrodcrate>Fuel Rod Crate</entityname.fuelrodcrate>
+  <entitydescription.fuelrodcrate>Safely stores up to 8 fuel rods and prevents them from irradiating the surroundings.</entitydescription.fuelrodcrate>
+  <entityname.fuelrodcrateshelf>Fuel Rod Crate Shelf</entityname.fuelrodcrateshelf>
+  <entitydescription.fuelrodcrateshelf>Can hold up to 2 fuel rod crates.</entitydescription.fuelrodcrateshelf>
+  <entityname.potassiumiodidetablets>Potassium Iodide Tablets</entityname.potassiumiodidetablets>
+  <entitydescription.potassiumiodidetablets>Light protection from radiation, useful as a precaution of an imminent low radiation hazard. Reduces low amounts of contamination.</entitydescription.potassiumiodidetablets>
+  <entityname.activatedcarbontablets>Activated Carbon Tablets</entityname.activatedcarbontablets>
+  <entitydescription.activatedcarbontablets>Used to cure low amounts of poisoning and radiation. Useless against contamination. Excessive use can be harmful.</entitydescription.activatedcarbontablets>
+  <entityname.radioactivematcrate>Radioactive Material Crate</entityname.radioactivematcrate>
+  <entitydescription.radioactivematcrate>Can safely store up to 9 stacks of radioactive ores or minerals.</entitydescription.radioactivematcrate>
+  <entityname.radioactivematcontainer>Radioactive Material Container</entityname.radioactivematcontainer>
+  <entitydescription.radioactivematcontainer>Can safely store up to 6 stacks of radioactive minerals.</entitydescription.radioactivematcontainer>
+  <entityname.nuclearcartridge>Nuclear Cartridge</entityname.nuclearcartridge>
+  <entitydescription.nuclearcartridge>A magazine for nuclear guns.</entitydescription.nuclearcartridge>
+  <entityname.deconsoltank>Deconsol</entityname.deconsoltank>
+  <entitydescription.deconsoltank>A decontamination solution. Needs to be sprayed onto a contaminated person by using a sprayer.</entitydescription.deconsoltank>
+  <!-- Afflictions -->
+  <afflictionname.radiationresistance>Radiation Resistance</afflictionname.radiationresistance>
+  <afflictiondescription.radiationresistance>You are more resistant to radiation, however you are not immune to it!</afflictiondescription.radiationresistance>
+  <afflictiondescription.radiationresistance.others>The patient has built up a decent resistance towards radiation.</afflictiondescription.radiationresistance.others>
+  <afflictionname.contaminated>Contaminated</afflictionname.contaminated>
+  <afflictiondescription.contaminated>The patient is slowly irradiating the area. It's better to treat this sooner rather than later.</afflictiondescription.contaminated>
+  <afflictiondescription.contaminated.high>The patient is severely contaminated and a massive health hazard to others. Caution while treating is advised!</afflictiondescription.contaminated.high>
+  <afflictioncauseofdeath.contaminated>Died of radiation sickness.</afflictioncauseofdeath.contaminated>
+  <afflictioncauseofdeathself.contaminated>You have died of radiation sickness.</afflictioncauseofdeathself.contaminated>
+  <afflictionname.overheating>Heat Stroke Risk</afflictionname.overheating>
+  <afflictiondescription.overheating.self>You're sweating. The surrouning air is way too hot. Better not stay here for too long!</afflictiondescription.overheating.self>
+  <afflictiondescription.overheating>The patient is sweating a lot! They should probably vacate the area and cool off for a bit.</afflictiondescription.overheating>
+  <afflictioncauseofdeath.overheating>Burned to death.</afflictioncauseofdeath.overheating>
+  <afflictioncauseofdeathself.overheating>You have burned to death.</afflictioncauseofdeathself.overheating>
+</infotexts>

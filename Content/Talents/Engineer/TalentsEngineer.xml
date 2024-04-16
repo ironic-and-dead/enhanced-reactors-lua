@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Talents>
+  <Override>
+    <Talent identifier="nuclearoption">
+      <Icon texture="Content/UI/TalentsIcons1.png" sheetindex="3,7" sheetelementsize="128,128" />
+      <Description tag="talentdescription.nuclearoption" />
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.nucleargun" color="gui.orange" />
+      </Description>
+      <Description tag="talentdescription.unlockrecipe">
+        <Replace tag="[itemname]" value="entityname.nuclearcartridge" color="gui.orange" />
+      </Description>
+      <AddedRecipe itemidentifier="nucleargun" />
+      <AddedRecipe itemidentifier="nuclearcartridge" />
+      <AddedRecipe itemidentifier="nuclearshellcheap" />
+      <AddedRecipe itemidentifier="nucleardepthchargecheap" />
+    </Talent>
+  </Override>
+</Talents>

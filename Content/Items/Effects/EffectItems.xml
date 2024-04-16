@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="Triggered Effect - Low Radiation (10m)" identifier="effect_trigger_radiation_low" tags="effect" description="Gives off radiation within a 10m radius when active.     Takes walls, doors and character distance from the center into account.     Radiation and contamination per second at the center: 0.5     Can be wired to turn it on/off." scale="0.25" spritecolor="100,255,100,255" health="100" hiddeningame="true" damagedbyrepairtools="false" allowrotatingineditor="false" allowedlinks="gap,door" linkable="true">
+      <Sprite texture="%ModDir%/Content/Items/Effects/fxIcon.png" sourcerect="0,0,234,234" depth="0.001" origin="0.5,0.5" />
+      <LightComponent lightcolor="0,0,0,0" IsOn="true" range="0" allowingameediting="false" canbeselected="false">
+        <StatusEffect type="OnActive" target="This" interval="0.3" comparison="And" AllowWhenBroken="true">
+          <Explosion range="1000" itemdamage="0.0" structuredamage="0.0" ballastfloradamage="0" camerashake="0" camerashakerange="0" explosiondamage="0" force="0" flames="false" smoke="false" shockwave="false" sparks="false" flash="false" underwaterbubble="false">
+            <Affliction identifier="radiationsickness" strength="0.15" />
+            <Affliction identifier="contaminated" strength="0.15" />
+            <Affliction identifier="radiationsounds" strength="0.9" />
+            <Affliction identifier="overheating" strength="0.06" />
+          </Explosion>
+        </StatusEffect>
+      </LightComponent>
+      <EntitySpawnerComponent ItemIdentifier="" SpeciesName="" OnlySpawnWhenCrewInRange="True" CrewAreaShape="Circle" CrewAreaBounds="1000,1000" CrewAreaRadius="1000" CrewAreaOffset="0,0" SpawnAreaShape="Circle" SpawnAreaBounds="1000,1000" SpawnAreaRadius="1000" SpawnAreaOffset="0,0" SpawnTimerRange="-1,-1" SpawnAmountRange="1,1" MaximumAmount="1" MaximumAmountInArea="1" MaximumAmountRangePadding="0" PreloadCharacter="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="False" Msg="">
+        <StatusEffect type="OnActive" target="This" tags="active" setvalue="true" interval="0.1" duration="0.2" />
+      </EntitySpawnerComponent>
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <input name="toggle" displayname="connection.togglestate" />
+        <input name="set_state" displayname="connection.setstate" />
+      </ConnectionPanel>
+    </Item>
+    <Item name="Triggered Effect - Medium Radiation (10m)" identifier="effect_trigger_radiation_medium" tags="effect" description="Gives off radiation within a 10m radius when active.     Takes walls, doors and character distance from the center into account.     Radiation and contamination per second at the center: 1.0     Can be wired to turn it on/off." scale="0.25" spritecolor="100,255,100,255" health="100" hiddeningame="true" damagedbyrepairtools="false" allowrotatingineditor="false" allowedlinks="gap,door" linkable="true">
+      <Sprite texture="%ModDir%/Content/Items/Effects/fxIcon.png" sourcerect="0,0,234,234" depth="0.001" origin="0.5,0.5" />
+      <LightComponent lightcolor="0,0,0,0" IsOn="true" range="0" allowingameediting="false" canbeselected="false">
+        <StatusEffect type="OnActive" target="This" interval="0.3" comparison="And" AllowWhenBroken="true">
+          <Explosion range="1000" itemdamage="0.0" structuredamage="0.0" ballastfloradamage="0" camerashake="0" camerashakerange="0" explosiondamage="0" force="0" flames="false" smoke="false" shockwave="false" sparks="false" flash="false" underwaterbubble="false">
+            <Affliction identifier="radiationsickness" strength="0.3" />
+            <Affliction identifier="contaminated" strength="0.3" />
+            <Affliction identifier="radiationsounds" strength="1.9" />
+            <Affliction identifier="overheating" strength="0.12" />
+          </Explosion>
+        </StatusEffect>
+      </LightComponent>
+      <EntitySpawnerComponent ItemIdentifier="" SpeciesName="" OnlySpawnWhenCrewInRange="True" CrewAreaShape="Circle" CrewAreaBounds="1000,1000" CrewAreaRadius="1000" CrewAreaOffset="0,0" SpawnAreaShape="Circle" SpawnAreaBounds="1000,1000" SpawnAreaRadius="1000" SpawnAreaOffset="0,0" SpawnTimerRange="-1,-1" SpawnAmountRange="1,1" MaximumAmount="1" MaximumAmountInArea="1" MaximumAmountRangePadding="0" PreloadCharacter="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="False" Msg="">
+        <StatusEffect type="OnActive" target="This" tags="active" setvalue="true" interval="0.1" duration="0.2" />
+      </EntitySpawnerComponent>
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <input name="toggle" displayname="connection.togglestate" />
+        <input name="set_state" displayname="connection.setstate" />
+      </ConnectionPanel>
+    </Item>
+    <Item name="Triggered Effect - High Radiation (10m)" identifier="effect_trigger_radiation_high" tags="effect" description="Gives off radiation within a 10m radius when active.     Takes walls, doors and character distance from the center into account.     Radiation and contamination per second at the center: 1.5     Can be wired to turn it on/off." scale="0.25" spritecolor="100,255,100,255" health="100" hiddeningame="true" damagedbyrepairtools="false" allowrotatingineditor="false" allowedlinks="gap,door" linkable="true">
+      <Sprite texture="%ModDir%/Content/Items/Effects/fxIcon.png" sourcerect="0,0,234,234" depth="0.001" origin="0.5,0.5" />
+      <LightComponent lightcolor="0,0,0,0" IsOn="true" range="0" allowingameediting="false" canbeselected="false">
+        <StatusEffect type="OnActive" target="This" interval="0.3" comparison="And" AllowWhenBroken="true">
+          <Explosion range="1000" itemdamage="0.0" structuredamage="0.0" ballastfloradamage="0" camerashake="0" camerashakerange="0" explosiondamage="0" force="0" flames="false" smoke="false" shockwave="false" sparks="false" flash="false" underwaterbubble="false">
+            <Affliction identifier="radiationsickness" strength="0.45" />
+            <Affliction identifier="contaminated" strength="0.45" />
+            <Affliction identifier="radiationsounds" strength="2.9" />
+            <Affliction identifier="overheating" strength="0.18" />
+          </Explosion>
+        </StatusEffect>
+      </LightComponent>
+      <EntitySpawnerComponent ItemIdentifier="" SpeciesName="" OnlySpawnWhenCrewInRange="True" CrewAreaShape="Circle" CrewAreaBounds="1000,1000" CrewAreaRadius="1000" CrewAreaOffset="0,0" SpawnAreaShape="Circle" SpawnAreaBounds="1000,1000" SpawnAreaRadius="1000" SpawnAreaOffset="0,0" SpawnTimerRange="-1,-1" SpawnAmountRange="1,1" MaximumAmount="1" MaximumAmountInArea="1" MaximumAmountRangePadding="0" PreloadCharacter="False" PickingTime="0" CanBePicked="False" LockGuiFramePosition="False" GuiFrameOffset="0,0" AllowInGameEditing="False" Msg="">
+        <StatusEffect type="OnActive" target="This" tags="active" setvalue="true" interval="0.1" duration="0.2" />
+      </EntitySpawnerComponent>
+      <ConnectionPanel selectkey="Action" canbeselected="true" msg="ItemMsgRewireScrewdriver" hudpriority="10">
+        <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="480,420" anchor="Center" style="ConnectionPanel" />
+        <RequiredItem items="screwdriver" type="Equipped" />
+        <input name="toggle" displayname="connection.togglestate" />
+        <input name="set_state" displayname="connection.setstate" />
+      </ConnectionPanel>
+    </Item>
+  </Items>
+</Override>

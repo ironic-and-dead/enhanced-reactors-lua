@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="German" nowhitespace="false" translatedname="Deutsch">
+  <!-- Translated by profole / Übersetzt von profole -->
+  <!-- Display Names -->
+  <displayname.uraniumbased>[itemname] (Uran)</displayname.uraniumbased>
+  <displayname.thoriumbased>[itemname] (Thorium)</displayname.thoriumbased>
+  <displayname.fulguriumbased>[itemname] (Fulgurium)</displayname.fulguriumbased>
+  <displayname.volatilefulguriumbased>[itemname] (Instabiles Fulgurium)</displayname.volatilefulguriumbased>
+  <!-- Items -->
+  <entityname.hazmatsuit1>Hazmat Anzug</entityname.hazmatsuit1>
+  <entitydescription.hazmatsuit1>- Obligatorische Ausrüstung um Brennstäbe zu hantieren.\n- Benötigt ein Luftquelle.\n- Schützt nicht vor Druck.</entitydescription.hazmatsuit1>
+  <entityname.fuelrodtongs>Brennstabzange</entityname.fuelrodtongs>
+  <entitydescription.fuelrodtongs>Wird benötigt um aktive Brennstäbe zu transportieren, ohne sie dabei die Hände zu verbrennen. Kann in einem Werkzeuggürtel gelagert werden.</entitydescription.fuelrodtongs>
+  <entityname.geigercounter>Zählrohr</entityname.geigercounter>
+  <entitydescription.geigercounter>Erlaubt dir Strahlung zu messen. Kann auf Charaktere angewandt werden.</entitydescription.geigercounter>
+  <entityname.fuelrodcrate>Brennstabkiste</entityname.fuelrodcrate>
+  <entitydescription.fuelrodcrate>Kann sicher bis zu 8 Brennstäbe lagern ohne die Umgebung zu verstrahlen.</entitydescription.fuelrodcrate>
+  <entityname.fuelrodcrateshelf>Brennstabkistenregal</entityname.fuelrodcrateshelf>
+  <entitydescription.fuelrodcrateshelf>Kann mit bis zu 2 Brenstabbkisten befüllt werden.</entitydescription.fuelrodcrateshelf>
+  <entityname.potassiumiodidetablets>Kaliumiodid Tabletten</entityname.potassiumiodidetablets>
+  <entitydescription.potassiumiodidetablets>Schützt vor niedriger Strahlung, gut um bevorstehende Strahlungsrisiken vorzubeugen. Hilft ein wenig gegen Kontaminierung.</entitydescription.potassiumiodidetablets>
+  <entityname.activatedcarbontablets>Aktikkohle Tabletten</entityname.activatedcarbontablets>
+  <entitydescription.activatedcarbontablets>Bindet kleine an Mengen and Gift und Strahlung. Nutzlos gegen Kontaminierung. Exzessiver Konsum kann schädlich sein.</entitydescription.activatedcarbontablets>
+  <entityname.radioactivematcrate>Strahlungssichere Materialienkiste</entityname.radioactivematcrate>
+  <entitydescription.radioactivematcrate>Kann bis zu 9 Stapel von radioaktivem Material sicher lagern.</entitydescription.radioactivematcrate>
+  <entityname.radioactivematcontainer>Strahlungssicherer Materialienkoffer</entityname.radioactivematcontainer>
+  <entitydescription.radioactivematcontainer>Kann bis zu 6 Stapel von radioaktivem Material sicher lagern.</entitydescription.radioactivematcontainer>
+  <entityname.nuclearcartridge>Nuklearpatrone</entityname.nuclearcartridge>
+  <entitydescription.nuclearcartridge>Ein Magazin für Nuklearwaffen.</entitydescription.nuclearcartridge>
+  <entityname.deconsoltank>Deconsol</entityname.deconsoltank>
+  <entitydescription.deconsoltank>Eine dekontaminierende Lösung, welche mit einem Sprayer auf die kontaminierte Person aufgetragen werden muss.</entitydescription.deconsoltank>
+  <!-- Afflictions -->
+  <afflictionname.radiationresistance>Strahlungsschutz</afflictionname.radiationresistance>
+  <afflictiondescription.radiationresistance>Du bist resistenter gegen Strahlung, aber nicht immun!</afflictiondescription.radiationresistance>
+  <afflictiondescription.radiationresistance.others>Der/Die Patient/in hat eine deutliche Resistenz gegen Strahlung aufgebaut.</afflictiondescription.radiationresistance.others>
+  <afflictionname.contaminated>Kontaminiert</afflictionname.contaminated>
+  <afflictiondescription.contaminated>Der Patient verstrahlt langsam die Gegend. Sollte lieber früher als später behandelt werden.</afflictiondescription.contaminated>
+  <afflictiondescription.contaminated.high>Der/Die Patient/in ist stark kontaminiert und ist ein Gesundheitsrisiko gegenüber jedem in seiner Nähe. Sei vorsichtig bei der Behandlung!</afflictiondescription.contaminated.high>
+  <afflictioncauseofdeath.contaminated>Starb an Strahlungskrankheit.</afflictioncauseofdeath.contaminated>
+  <afflictioncauseofdeathself.contaminated>Du bist an einer Strahlungskrankheit gestorben.</afflictioncauseofdeathself.contaminated>
+  <afflictionname.overheating>Hitzeschlaganfällig</afflictionname.overheating>
+  <afflictiondescription.overheating.self>Du schwitzt, denn die Luft ist viel zu heiß hier. Bleib lieber nicht so lange hier!</afflictiondescription.overheating.self>
+  <afflictiondescription.overheating>Der/Die Patient/in ist stark am schwitzen! Er/Sie muss sofort hier weg und sich abkühlen!</afflictiondescription.overheating>
+  <afflictioncauseofdeath.overheating>Verbrannte.</afflictioncauseofdeath.overheating>
+  <afflictioncauseofdeathself.overheating>Du bist verbrannt.</afflictioncauseofdeathself.overheating>
+</infotexts>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="Decontamination Shower" identifier="deconshower" allowattachitems="false" width="463" height="398" texturescale="1.0,1.0" scale="0.5" category="Decorative" isshootable="true" requireaimtouse="true">
+      <sprite texture="%ModDir%/Content/Items/Misc/DeconShower.png" sourcerect="0,0,187,414" depth="0.761" premultiplyalpha="false" origin="0.5,0.5" />
+      <DecorativeSprite texture="%ModDir%/Content/Items/Misc/DeconShower.png" sourcerect="188,0,187,414" depth="0.76" origin="0.5,0.5">
+        <IsActiveConditional HasTag="deconsol" targetcontaineditem="true" />
+      </DecorativeSprite>
+      <DecorativeSprite texture="%ModDir%/Content/Items/Misc/DeconShower.png" sourcerect="376,0,187,414" depth="0.77" origin="0.5,0.5" />
+      <Price baseprice="180">
+        <Price storeidentifier="merchantengineering" maxavailable="1" />
+      </Price>
+      <Deconstruct time="25">
+        <Item identifier="steel" />
+        <Item identifier="plastic" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="35">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="iron" />
+        <RequiredItem identifier="aluminium" />
+        <RequiredItem identifier="aluminium" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>
+      <Body width="184" height="412" density="20" />
+      <Controller canbeselected="true" selectkey="Select" UserPos="-1,0" direction="Right" hidehud="false" drawuserbehind="true" noninteractablewhenflippedy="true" comparison="And">
+        <ActiveConditional HasTag="deconsol" targetcontaineditem="true" />
+        <ActiveConditional condition="gt 0" targetcontaineditem="true" />
+        <!-- don't allow entering the shower when wearing an exosuit -->
+        <RequiredItem items="deepdivinglarge" type="Picked" requireempty="true" />
+        <limbposition limb="RightHand" position="100,-200" allowusinglimb="false" />
+        <limbposition limb="LeftHand" position="100,-200" allowusinglimb="false" />
+        <StatusEffect type="OnActive" target="Character">
+          <Conditional contaminated="gt 1" />
+          <ReduceAffliction identifier="contaminated" amount="10.0" />
+          <Affliction identifier="decontaminate" amount="1.0" />
+          <Sound file="Content/Items/Tools/Sprayer.ogg" range="250.0" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="Contained,Character" Condition="-2.5">
+          <Conditional contaminated="gt 1" />
+          <RequiredItem items="deconsol" type="Contained" />
+        </StatusEffect>
+      </Controller>
+      <Holdable canbepicked="true" selectkey="Select" pickkey="Action" slots="RightHand+LeftHand" holdpos="50,25" handle1="-10,-20" handle2="10,100" holdangle="-90" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" attachable="true" aimable="true">
+        <RequiredItem items="wrench" type="Equipped" />
+        <StatusEffect target="This" type="OnContained">
+          <Conditional attached="false" targetitemcomponentname="Holdable" />
+          <DropContainedItems />
+        </StatusEffect>
+      </Holdable>
+      <ItemContainer canbeselected="true" selectkey="Aim" capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="tank">
+        <GuiFrame relativesize="0.1,0.15" anchor="BottomCenter" style="ItemUI" />
+        <Containable items="deconsol" />
+      </ItemContainer>
+    </Item>
+  </Items>
+</Override>

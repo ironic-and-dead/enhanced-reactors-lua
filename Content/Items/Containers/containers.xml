@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="Radioactive Material Crate" identifier="radioactivematcrate" tags="crate,allowcleanup,radioactiveorestorage,containradiation" description="Can safely store up to 9 stacks of radioactive ores or minerals." scale="0.5" linkable="true" pickdistance="150" showcontentsintooltip="true" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="cargocontainer" secondary="crateshelf" />
+      <Deconstruct time="5">
+        <Item identifier="steel" amount="1" />
+        <Item identifier="lead" amount="1" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredSkill identifier="mechanical" level="20" />
+        <Item identifier="steel" amount="2" />
+        <Item identifier="lead" amount="2" />
+      </Fabricate>
+      <Sprite texture="%ModDir%/Content/Items/Containers/ShieldedCrate.png" depth="0.54" sourcerect="0,0,146,82" origin="0.5,0.5" />
+      <Body width="144" height="80" density="25" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-30" handle1="0,-30" aimable="false" msg="ItemMsgPickUpSelect" />
+      <ItemContainer capacity="9" canbeselected="false" hideitems="true" keepopenwhenequipped="true" movableframe="true">
+        <Containable items="radioactivematerial" />
+      </ItemContainer>
+    </Item>
+  </Override>
+  <Override>
+    <Item name="Radioactive Material Container" identifier="radioactivematcontainer" category="Equipment" tags="mediumitem,mobilecontainer,tool,radioactivematstorage,containradiation" cargocontaineridentifier="" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="Can safely store up to 6 stacks of radioactive minerals." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+      <PreferredContainer primary="locker" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" amount="1" spawnprobability="0.05" />
+      <PreferredContainer secondary="outpostcrewcabinet" amount="1" spawnprobability="0.1" />
+      <Deconstruct time="5" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredSkill identifier="mechanical" level="20" />
+        <Item identifier="steel" amount="1" />
+        <Item identifier="lead" amount="1" />
+      </Fabricate>
+      <Price baseprice="120">
+        <Price storeidentifier="merchantoutpost" minavailable="1" />
+        <Price storeidentifier="merchantcity" multiplier="0.9" minavailable="2" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.25" minavailable="1" />
+        <Price storeidentifier="merchantmine" multiplier="1.25" minavailable="4" />
+      </Price>
+      <InventoryIcon texture="%ModDir%/Content/Items/Containers/ShieldedContainer.png" sourcerect="0,0,84,71" origin="0.5,0.5" />
+      <Sprite texture="%ModDir%/Content/Items/Containers/ShieldedContainer.png" sourcerect="0,0,84,71" origin="0.5,0.5" depth="0.6" />
+      <Body width="82" height="70" density="20" />
+      <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+        <Attack structuredamage="0" itemdamage="1" targetimpulse="2">
+          <Affliction identifier="blunttrauma" strength="2" />
+          <Affliction identifier="stun" strength="0.6" />
+          <StatusEffect type="OnUse" target="UseTarget">
+            <Conditional entitytype="eq Character" />
+            <Sound file="Content/Items/Weapons/Smack1.ogg" selectionmode="random" range="500" />
+            <Sound file="Content/Items/Weapons/Smack2.ogg" range="500" />
+          </StatusEffect>
+        </Attack>
+      </MeleeWeapon>
+      <ItemContainer capacity="6" keepopenwhenequipped="true" movableframe="true">
+        <Containable items="uranium,thorium,fulgurium" />
+      </ItemContainer>
+      <aitarget sightrange="1000" soundrange="1000" fadeouttime="2" />
+    </Item>
+  </Override>
+  <Override>
+    <Item name="Fuel Rod Crate" identifier="fuelrodcrate" tags="smallcrate,fuelrodcrate,fuelrodcontainer,containradiation,depthchargeammo" description="Safely stores up to 8 fuel rods and prevents them from irradiating the surroundings." maxstacksize="1" scale="0.5" impactsoundtag="impact_metal_heavy">
+      <BrokenSprite texture="%ModDir%/Content/Items/Containers/NuclearCrate.png" sourcerect="95,0,95,114" depth="0.54" origin="0.5,0.66" maxcondition="50" fadein="false" />
+      <!--<DecorativeSprite texture="%ModDir%/Content/Items/Containers/NuclearCrate.png" sourcerect="95,52,95,62" depth="0.54" origin="0.5,0.55" />-->
+      <Sprite texture="%ModDir%/Content/Items/Containers/NuclearCrate.png" sourcerect="0,0,95,78" depth="0.54" origin="0.5,0.5" />
+      <PreferredContainer primary="fuelcratecontainer" secondary="coilgunammoloader,ammoboxcontainer" />
+      <PreferredContainer secondary="wreckammoboxcontainer" amount="1" spawnprobability="0.2" />
+      <Body width="90" height="72" density="25" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="15">
+        <RequiredSkill identifier="mechanical" level="40" />
+        <RequiredItem identifier="lead" amount="1" />
+        <RequiredItem identifier="steel" amount="1" />
+      </Fabricate>
+      <Deconstruct time="10" />
+      <GreaterComponent drawhudwhenequipped="false" allowingameediting="false" canbeselected="false" timeframe="0" />
+      <Holdable slots="RightHand,LeftHand" holdpos="0,-30" handle1="0,-30" aimable="false" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnContained" target="This" targetitemcomponent="ItemContainer" timeframe="0" condition="100" hideitems="true" drawinventory="false" canbeselected="true" locked="false" allowdraganddrop="true" allowaccess="true" setvalue="true" interval="1.1" AllowWhenBroken="true">
+          <Conditional HasTag="fuelcratecontainer" targetcontainer="true" />
+          <Conditional HasTag="coilgunammoloader" targetcontainer="true" />
+          <Conditional HasTag="ammoboxcontainer" targetcontainer="true" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="This" hideitems="true" drawinventory="false" canbeselected="false" locked="true" allowdraganddrop="false" allowaccess="false" setvalue="true" interval="0.3" AllowWhenBroken="true">
+          <Conditional targetitemcomponent="ItemContainer" />
+        </StatusEffect>
+        <StatusEffect type="OnPicked" target="This" timeframe="0" condition="100" setvalue="true" AllowWhenBroken="true">
+          <Conditional timeframe="eq 1" />
+          <Sound file="%ModDir%/Content/Items/Containers/CrateClose1.ogg" range="300" volume="2.0" loop="false" />
+        </StatusEffect>
+      </Holdable>
+      <ItemContainer selectkey="Use" drawhudwhenequipped="false" hideitems="true" capacity="8" maxstacksize="1" itempos="-30,4" iteminterval="20,1" itemrotation="0" itemsperrow="4" AllowSwappingContainedItems="false" containedspritedepths="0.537,0.537,0.537,0.537,0.538,0.538,0.538,0.538" allowdraganddrop="false" slotsperrow="4" drawinventory="true" canbeselected="true" canbecombined="false" removecontaineditemsondeconstruct="true">
+        <GuiFrame relativesize="0.2,0.2" anchor="Center" style="ItemUI" />
+        <StatusEffect type="OnNotContained" target="This" drawinventory="true" canbeselected="true" locked="false" allowdraganddrop="true" allowaccess="true" setvalue="true" interval="0.3" AllowWhenBroken="true">
+          <Conditional targetitemcomponent="ItemContainer" />
+        </StatusEffect>
+        <StatusEffect type="OnPicked" target="This" hideitems="true" timeframe="1" condition="0" setvalue="true" disabledeltatime="true" AllowWhenBroken="true" comparison="And">
+          <Conditional timeframe="eq 0" />
+          <Conditional targetitemcomponent="ItemContainer" />
+          <Sound file="%ModDir%/Content/Items/Containers/CrateOpen1.ogg" range="300" volume="2.0" loop="false" />
+        </StatusEffect>
+        <Containable items="reactorfuel">
+          <!-- doesn't work
+          <StatusEffect type="Always" target="This" tags="containradiation" interval="0.1" duration="0.2" setvalue="true" AllowWhenBroken="true">
+            <Conditional condition="eq 100" />
+          </StatusEffect>
+          -->
+        </Containable>
+      </ItemContainer>
+    </Item>
+  </Override>
+  <Override>
+    <Item name="Fuel Rod Crate Shelf" identifier="fuelrodcrateshelf" tags="container,fuelcratecontainer" description="Can hold up to 2 fuel rod crates." linkable="true" pickdistance="150" waterproof="true" scale="0.5" isshootable="true" requireaimtouse="true" impactsoundtag="impact_metal_heavy">
+      <Sprite texture="%ModDir%/Content/Items/Containers/NuclearCrateShelf.png" depth="0.785" sourcerect="0,0,119,260" canflipx="false" origin="0.5,0.5" />
+      <Body width="117" height="258" density="40" />
+      <Fabricate suitablefabricators="fabricator" requiredtime="15" requiresrecipe="false" amount="1">
+        <RequiredSkill identifier="mechanical" level="35" />
+        <RequiredItem identifier="steel" amount="3" />
+      </Fabricate>
+      <Deconstruct time="5">
+        <Item identifier="steel" amount="1" />
+      </Deconstruct>
+      <Holdable canbepicked="true" selectkey="Select" pickkey="Action" slots="RightHand+LeftHand" holdpos="50,25" handle1="-10,-20" handle2="10,100" holdangle="-90" msg="ItemMsgDetachWrench" PickingTime="5.0" aimpos="65,-10" attachable="true" aimable="true">
+        <RequiredItem items="wrench" type="Equipped" />
+        <StatusEffect target="This" type="OnContained">
+          <Conditional attached="false" targetitemcomponentname="Holdable" />
+          <DropContainedItems />
+        </StatusEffect>
+      </Holdable>
+      <ItemContainer capacity="2" canbeselected="true" hideitems="false" slotsperrow="1" itempos="59,-73" iteminterval="0,-115" msg="ItemMsgInteractSelect">
+        <GuiFrame relativesize="0.125,0.3" anchor="Center" style="ItemUI" />
+        <Containable items="fuelrodcrate" />
+      </ItemContainer>
+    </Item>
+  </Override>
+  <!--
+  <Override>
+    <Item name="" identifier="fuelrodcratespawner" Category="Hidden" Tags="smallitem" maxstacksize="1" cargocontaineridentifier="metalcrate" scale="0.5" spritecolor="255,255,255,0" noninteractable="true" hideinmenus="true">
+      <PrefferedContainer primary="reactorcab" amount="1" spawnprobability="1" />
+      <Sprite texture="Content/Items/Tools/tools.png" depth="0.55" sourcerect="0,0,1,1" />
+      <Body radius="1" density="10" />
+      <Holdable handle1="0,0" slots="Any" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="Always" target="This" oneshot="true">
+          <SpawnItem identifier="fuelrodcrate" spawnposition="This" SpawnIfInventoryFull="true" SpawnIfCantBecontained="true" />
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+  </Override>
+  <Override>
+    <Item name="" identifier="fuelrodcrateshelfspawner" Category="Hidden" Tags="smallitem" maxstacksize="1" cargocontaineridentifier="metalcrate" scale="0.5" spritecolor="255,255,255,0" noninteractable="true" hideinmenus="true">
+      <PreferredContainer primary="reactorcab" amount="1" spawnprobability="1" />
+      <Sprite texture="Content/Items/Tools/tools.png" depth="0.55" sourcerect="0,0,1,1" />
+      <Body radius="1" density="10" />
+      <Holdable handle1="0,0" slots="Any" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="Always" target="This" oneshot="true">
+          <SpawnItem identifier="fuelrodcrateshelf" spawnposition="This" SpawnIfInventoryFull="true" SpawnIfCantBecontained="true" />
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+  </Override>
+  -->
+</Items>

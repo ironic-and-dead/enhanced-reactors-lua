@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Перевод сделан By Plasma! -->
+<infotexts language="Russian" nowhitespace="false" translatedname="Русский">
+  <!-- Отображаемые имена -->
+  <displayname.uraniumbased>[itemname] (Уран)</displayname.uraniumbased>
+  <displayname.thoriumbased>[itemname] (Торий)</displayname.thoriumbased>
+  <displayname.fulguriumbased>[itemname] (Кусок грозовия)</displayname.fulguriumbased>
+  <displayname.volatilefulguriumbased>[itemname] (Нестабильный Кусок грозовия)</displayname.volatilefulguriumbased>
+  <!-- Предметы -->
+  <entityname.hazmatsuit1>Костюм химзащиты</entityname.hazmatsuit1>
+  <entitydescription.hazmatsuit1>- Оборудование необходимое при обращении с топливными стержнями, реакторами, и радиоактивными материалами.\n - Требуется кислородный баллон.\n - Не защищает от давления!</entitydescription.hazmatsuit1>
+  <entityname.fuelrodtongs>Щипцы для топливных стержней</entityname.fuelrodtongs>
+  <entitydescription.fuelrodtongs>Оборудование необходимое для перемещения активных топливных стержней, не обжигая при этом рук. Может храниться на поясе.</entitydescription.fuelrodtongs>
+  <entityname.geigercounter>Счетчик Гейгера</entityname.geigercounter>
+  <entitydescription.geigercounter>Оборудование необходимое чтобы обнаруживать излучение. Может использоваться в меню здоровья.</entitydescription.geigercounter>
+  <entityname.fuelrodcrate>Ящик для топливных стержней</entityname.fuelrodcrate>
+  <entitydescription.fuelrodcrate>Надёжное хранилище для 8-ми топливных стержней. Предотвращает облучение окружающей среды</entitydescription.fuelrodcrate>
+  <entityname.fuelrodcrateshelf>Полка для ящиков с топливными стержнями</entityname.fuelrodcrateshelf>
+  <entitydescription.fuelrodcrateshelf>Может содержать в себе до 2-х ящиков с топливными стержнями</entitydescription.fuelrodcrateshelf>
+  <entityname.potassiumiodidetablets>Таблетки йодида калия</entityname.potassiumiodidetablets>
+  <entitydescription.potassiumiodidetablets>Легкая защита вашего тела от радиации. Полезно в случаях кратковременного неминуемого облучения. Например при замене топливных стержней</entitydescription.potassiumiodidetablets>
+  <entityname.activatedcarbontablets>Таблетки активированного угля</entityname.activatedcarbontablets>
+  <entitydescription.activatedcarbontablets>Используется для лечения небольших доз радиации, и слабых отравлениях. Чрезмерное употребление может быть вредным!</entitydescription.activatedcarbontablets>
+  <entityname.radioactivematcrate>Ящик для радиоактивных материалов</entityname.radioactivematcrate>
+  <entitydescription.radioactivematcrate>Может безопасно хранить до 9 стаков радиоактивных руд или минералов.</entitydescription.radioactivematcrate>
+  <entityname.radioactivematcontainer>Контейнер для радиоактивных материалов</entityname.radioactivematcontainer>
+  <entitydescription.radioactivematcontainer>Может безопасно хранить до 6 стаков радиоактивных материалов.</entitydescription.radioactivematcontainer>
+  <entityname.nuclearcartridge>Ядерный картридж</entityname.nuclearcartridge>
+  <entitydescription.nuclearcartridge>Журнал для ядерного оружия.</entitydescription.nuclearcartridge>
+  <!-- Афликшоны -->
+  <afflictionname.radiationresistance>Радиационная защита</afflictionname.radiationresistance>
+  <afflictiondescription.radiationresistance>Вы более устойчивы к радиации, однако у вас нет к ней иммунитета!</afflictiondescription.radiationresistance>
+  <afflictiondescription.radiationresistance.others>Пациент имеет приличную устойчивость к радиации.</afflictiondescription.radiationresistance.others>
+  <afflictionname.contaminated>Облучен</afflictionname.contaminated>
+  <afflictiondescription.contaminated>Пациент медленно облучает эту область. Лучше заняться его лечением пораньше, иначе потом работы будет больше.</afflictiondescription.contaminated>
+  <afflictiondescription.contaminated.high>Пациент сильно облучен и представляет серьезную опасность для здоровья окружающих. Рекомендуется соблюдать осторожность при лечении!</afflictiondescription.contaminated.high>
+  <afflictioncauseofdeath.contaminated>Смерть от лучевой болезни</afflictioncauseofdeath.contaminated>
+  <afflictioncauseofdeathself.contaminated>Вы умерли от лучевой болезни</afflictioncauseofdeathself.contaminated>
+  <afflictionname.overheating>Риск теплового удара</afflictionname.overheating>
+  <afflictiondescription.overheating.self>Вы сильно вспотели. Окружающий воздух слишком горячий. Лучше не задерживаться здесь слишком долго!</afflictiondescription.overheating.self>
+  <afflictiondescription.overheating>Пациент сильно потеет! Ему следует покинуть помещение и остыть.</afflictiondescription.overheating>
+  <afflictioncauseofdeath.overheating>Смерть от теплового удара</afflictioncauseofdeath.overheating>
+  <afflictioncauseofdeathself.overheating>Вы умерли от теплового удара</afflictioncauseofdeathself.overheating>
+</infotexts>
