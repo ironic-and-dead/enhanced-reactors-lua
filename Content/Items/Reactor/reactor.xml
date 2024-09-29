@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Items>
   <Override>
     <Item name="" identifier="reactor1wrecked" nameidentifier="reactor1" variantof="reactor1" tags="wreckreactor" category="Wrecked" condition="0" spritecolor="200,150,100,255">
@@ -81,19 +81,6 @@
         <StatusEffect type="InWater" target="This" condition="-0.5" comparison="And">
           <Conditional condition="gt 10" />
           <Conditional temperature="gt 1" />
-        </StatusEffect>
-        <!-- add a leak tag for the contained fuel rods to process to cause the reactor to leak radiation depending on its condition -->
-        <StatusEffect type="Always" target="This" tags="leaksmall" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true" comparison="And">
-          <Conditional condition="lt 75" />
-          <Conditional condition="gte 50" />
-        </StatusEffect>
-        <StatusEffect type="Always" target="This" tags="leakmedium" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true" comparison="And">
-          <Conditional condition="lt 50" />
-          <Conditional condition="gte 25" />
-        </StatusEffect>
-        <StatusEffect type="Always" target="This" tags="leaklarge" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true" comparison="And">
-          <Conditional condition="lt 25" />
-          <Conditional condition="gte 0" />
         </StatusEffect>
         <StatusEffect type="Always" target="This" tags="wreckreactor" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true">
           <Conditional condition="eq 0" />
@@ -305,6 +292,9 @@
         <Containable items="fulguriumfuelrodvolatile">
           <StatusEffect type="OnContaining" target="This" AvailableFuel="150.0" disabledeltatime="true" />
         </Containable>
+        <Containable items="huskfigurine">
+          <StatusEffect type="OnContaining" target="This" AvailableFuel="0" disabledeltatime="true" />
+        </Containable>
       </ItemContainer>
       <!-- invisible inventory slot for the critical state effect item -->
       <ItemContainer capacity="1" maxstacksize="1" canbeselected="false">
@@ -329,25 +319,25 @@
           <Affliction identifier="burn" strength="5" />
         </StatusEffect>
         <!-- set reactor condition to 30 and spawn an item inside it which damages it every second if repaired while active -->
-        <StatusEffect type="OnSuccess" target="This,Character" condition="30.0" setvalue="true" comparison="And">
+        <StatusEffect type="OnSuccess" target="This,Character" condition="40.0" setvalue="true" comparison="And">
           <Conditional temperature="gt 1" />
-          <Conditional condition="gte 30" />
+          <Conditional condition="gte 40" />
           <Conditional isPlayer="eq true" />
         </StatusEffect>
         <StatusEffect type="OnSuccess" target="This,Character" comparison="And">
           <Conditional temperature="gt 1" />
           <Conditional isPlayer="eq true" />
-          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="true" />
+          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="false" />
         </StatusEffect>
-        <StatusEffect type="OnFailure" target="This,Character" condition="30.0" setvalue="true" comparison="And">
+        <StatusEffect type="OnFailure" target="This,Character" condition="40.0" setvalue="true" comparison="And">
           <Conditional temperature="gt 1" />
-          <Conditional condition="gte 30" />
+          <Conditional condition="gte 40" />
           <Conditional isPlayer="eq true" />
         </StatusEffect>
         <StatusEffect type="OnFailure" target="This,Character" comparison="And">
           <Conditional temperature="gt 1" />
           <Conditional isPlayer="eq true" />
-          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="true" />
+          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="false" />
         </StatusEffect>
         <!-- explode if reactor is still outputting energy while trying to repair | DISABLED
         <StatusEffect type="OnSuccess" target="This,Character" condition="0.0" setvalue="true" comparison="And">
@@ -373,19 +363,6 @@
         <StatusEffect type="InWater" target="This" condition="-0.5" comparison="And">
           <Conditional condition="gt 10" />
           <Conditional temperature="gt 1" />
-        </StatusEffect>
-        <!-- add a leak tag for the contained fuel rods to process to cause the reactor to leak radiation depending on its condition -->
-        <StatusEffect type="Always" target="This" tags="leaksmall" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true" comparison="And">
-          <Conditional condition="lt 75" />
-          <Conditional condition="gte 50" />
-        </StatusEffect>
-        <StatusEffect type="Always" target="This" tags="leakmedium" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true" comparison="And">
-          <Conditional condition="lt 50" />
-          <Conditional condition="gte 25" />
-        </StatusEffect>
-        <StatusEffect type="Always" target="This" tags="leaklarge" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true" comparison="And">
-          <Conditional condition="lt 25" />
-          <Conditional condition="gte 0" />
         </StatusEffect>
         <StatusEffect type="Always" target="This" tags="wreckreactor" setvalue="true" duration="0.2" interval="0.1" AllowWhenBroken="true">
           <Conditional condition="eq 0" />
@@ -563,6 +540,9 @@
         <Containable items="fulguriumfuelrodvolatile">
           <StatusEffect type="OnContaining" target="This" AvailableFuel="150.0" disabledeltatime="true" />
         </Containable>
+        <Containable items="huskfigurine">
+          <StatusEffect type="OnContaining" target="This" AvailableFuel="0" disabledeltatime="true" />
+        </Containable>
       </ItemContainer>
       <!-- invisible inventory slot for the critical state effect item -->
       <ItemContainer capacity="1" maxstacksize="1" canbeselected="false">
@@ -587,25 +567,25 @@
           <Affliction identifier="burn" strength="5" />
         </StatusEffect>
         <!-- set reactor condition to 30 and spawn an item inside it which damages it every second if repaired while active -->
-        <StatusEffect type="OnSuccess" target="This,Character" condition="30.0" setvalue="true" comparison="And">
+        <StatusEffect type="OnSuccess" target="This,Character" condition="40.0" setvalue="true" comparison="And">
           <Conditional temperature="gt 1" />
-          <Conditional condition="gte 30" />
+          <Conditional condition="gte 40" />
           <Conditional isPlayer="eq true" />
         </StatusEffect>
         <StatusEffect type="OnSuccess" target="This,Character" comparison="And">
           <Conditional temperature="gt 1" />
           <Conditional isPlayer="eq true" />
-          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="true" />
+          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="false" />
         </StatusEffect>
-        <StatusEffect type="OnFailure" target="This,Character" condition="30.0" setvalue="true" comparison="And">
+        <StatusEffect type="OnFailure" target="This,Character" condition="40.0" setvalue="true" comparison="And">
           <Conditional temperature="gt 1" />
-          <Conditional condition="gte 30" />
+          <Conditional condition="gte 40" />
           <Conditional isPlayer="eq true" />
         </StatusEffect>
         <StatusEffect type="OnFailure" target="This,Character" comparison="And">
           <Conditional temperature="gt 1" />
           <Conditional isPlayer="eq true" />
-          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="true" />
+          <SpawnItem identifier="effect_reactorcritical" spawnposition="ThisInventory" spawnifinventoryfull="false" spawnifcantbecontained="false" />
         </StatusEffect>
         <!-- explode if reactor is still outputting energy while trying to repair | DISABLED
         <StatusEffect type="OnSuccess" target="This,Character" condition="0.0" setvalue="true" comparison="And">

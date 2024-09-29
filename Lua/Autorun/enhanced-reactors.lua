@@ -28,7 +28,7 @@ reactorLua.startTimer = function()
 end
 
 -- Short time loop called every 1/3 of a second 
-local shortPeriod = 333
+local shortPeriod = 3000
 reactorLua.startShortTimer = function()
     Hook.Add('think', 'smallThinkTimeLoop', function(instance, ptable)
         if not isEnded then
@@ -42,7 +42,6 @@ end
 -- Called at the start of the round 
 Hook.Add('roundStart', 'roundStartTime', function(instance, ptable)
     isEnded = false
-    print('Lua script started!')
     reactorLua.startTimer()
     reactorLua.startShortTimer()
 end)
@@ -54,179 +53,182 @@ Hook.Add('roundEnd', 'roundStartEndTime', function(instance, ptable)
     Hook.Remove('think', 'smallThinkTimeLoop')
 end)
 
+local supportedReactors = {
+    "reactor1",
+    "outpostreactor",
+    "ekdockyard_reactor_mini",
+    "ekdockyard_reactor_small",
+    "ekdockyard_reactorslow_small"
+}
+
+-- Define valid exemptions for container identifiers
+local shieldedContainer = {
+    "fuelrodcrate", 
+    "clownexosuit", 
+    "exosuit"
+}
+
+-- Define max distance for afflictions 1000 = 1m
+local maxDistance = 1000
+
 -- Main loop to fire functions related to active fuel rods
 reactorLua.invisibleExplosion = function()
-    for key,fuelRodItem in pairs(Item.ItemList) do
-        if fuelRodItem.HasTag('activefuelrod') then
+    for _,fuelRodItem in pairs(Item.ItemList) do
+        if fuelRodItem.HasTag('reactorfuel') 
+        and fuelRodItem.HasTag('activefuelrod') then
             local itemPosition = fuelRodItem.WorldPosition
-            -- fuel rod in crate or outpost reactor change active tag
-            if fuelRodItem.ContainerIdentifier == "fuelrodcrate" or 
-               fuelRodItem.ContainerIdentifier == "outpostreactor"  then
-                fuelRodItem.ReplaceTag('activefuelrod', 'containedactivefuelrod')
-            end
-            -- Active fuel rod not in container
-            if fuelRodItem.ContainerIdentifier ~= "reactor1" 
-                and fuelRodItem.ContainerIdentifier ~= "outpostreactor"
-                and not fuelRodItem.HasTag('deepdiving') 
-                and not fuelRodItem.HasTag('containradiation')  then
-                -- spawn random fire 1 in 20
-                if(randomfunction == true) and fuelRodItem.ContainerIdentifier ~= "fuelrodtongs" then
-                    Entity.Spawner.AddItemToSpawnQueue(twisted, itemPosition, nil, nil, function(item) end)
-                    randomfunction = false
-                end
-                for key, playerCharacter in pairs(Character.CharacterList) do
-                    -- if player is holding fuel rod add burn damage
-                    if playerCharacter.HasEquippedItem('activefuelrod', true) then 
-                        reactorLua.applyBurnStrength(fuelRodItem.Name, playerCharacter)
+            -- Check if the fuel rod is in a shielded container
+            if not reactorLua.isInValidContainer(fuelRodItem.ContainerIdentifier, shieldedContainer) then
+                -- Active fuel rod is not in not in a supported reactor
+                if not reactorLua.isInValidContainer(fuelRodItem.ContainerIdentifier, supportedReactors)
+                    and not fuelRodItem.HasTag('deepdiving') 
+                    and not fuelRodItem.HasTag('containradiation')  then
+                    -- Spawn random fire 1 in 20
+                    if randomfunction and fuelRodItem.ContainerIdentifier ~= "fuelrodtongs" then
+                        Entity.Spawner.AddItemToSpawnQueue(twisted, itemPosition, nil, nil, function(item) end)
+                        randomfunction = false
                     end
-                    -- check distance to fuel rod, if within range apply afflicitions
-                    local distance = Vector2.Distance(itemPosition, playerCharacter.WorldPosition)
-                    local maxDistance = 1000
-                    if distance < maxDistance then
-                        if Character.IsTargetVisible(fuelRodItem, playerCharacter, false, false) then
-                            reactorLua.applyAfflictionStrengths(fuelRodItem.Name, playerCharacter, distance ,maxDistance, false, 100)
+                    for _, playerCharacter in pairs(Character.CharacterList) do
+                        -- If player is holding fuel rod add burn damage
+                        if playerCharacter.HasEquippedItem('activefuelrod', true) then 
+                            reactorLua.applyBurnStrength(fuelRodItem.Name, playerCharacter)
+                        end
+                        -- Check distance to fuel rod, if within range apply afflicitions
+                        local distance = Vector2.Distance(itemPosition, playerCharacter.WorldPosition)
+                        if distance < maxDistance then
+                            if Character.IsTargetVisible(fuelRodItem, playerCharacter, false, false) then
+                                reactorLua.applyAfflictionStrengths(fuelRodItem.Name, playerCharacter, distance ,maxDistance, false, 100)
+                            end
+                        end
+                    end
+                end
+                -- Fuel rod in reactor and its condition is less than 75%
+                if reactorLua.isInValidContainer(fuelRodItem.ContainerIdentifier, supportedReactors) and
+                    fuelRodItem.Container.Condition <= 75 then 
+                    for _, playerCharacter in pairs(Character.CharacterList) do
+                        -- Check distance to fuel rod, if within range apply afflicitions
+                        local distance = Vector2.Distance(itemPosition, playerCharacter.WorldPosition)
+                        if distance < maxDistance then
+                            if Character.IsTargetVisible(fuelRodItem.Container, playerCharacter, false, false) then
+                                reactorLua.applyAfflictionStrengths(fuelRodItem.Name, playerCharacter, distance ,maxDistance, true, fuelRodItem.Container.Condition)
+                            end
                         end
                     end
                 end
             end
-            -- fuel rod in reactor and its condition is less than 75%
-            if fuelRodItem.ContainerIdentifier == "reactor1" and
-                fuelRodItem.Container.Condition <= 75 then 
-                for key, playerCharacter in pairs(Character.CharacterList) do
-                    -- check distance to fuel rod, if within range apply afflicitions
-                    local distance = Vector2.Distance(itemPosition, playerCharacter.WorldPosition)
-                    local maxDistance = 1000
-                    if distance < maxDistance then
-                        if Character.IsTargetVisible(fuelRodItem.Container, playerCharacter, false, false) then
-                            reactorLua.applyAfflictionStrengths(fuelRodItem.Name, playerCharacter, distance ,maxDistance, true, fuelRodItem.Container.Condition)
-                        end
-                    end
-                end
-            end 
-        end
-        -- fuel rod not in crate 
-        if fuelRodItem.HasTag('containedactivefuelrod') and
-            fuelRodItem.ContainerIdentifier ~= "fuelrodcrate" and
-            fuelRodItem.ContainerIdentifier ~= "outpostreactor" then
-                fuelRodItem.ReplaceTag('containedactivefuelrod', 'activefuelrod')
         end
     end
+end
+
+-- Check if the target is in a in a valid container
+reactorLua.isInValidContainer = function(containerId, containerArray)
+    for _, validId in ipairs(containerArray) do
+        if containerId == validId then
+            return true
+        end
+    end
+    return false
 end
 
 -- applied burn to the characters hand based on fuel rode type 
 reactorLua.applyBurnStrength = function(fuelRodType, playerCharacter)
     local limb = playerCharacter.AnimController.GetLimb(LimbType.LeftHand)
-    local baseBurnStrength = 1.5
-    if fuelRodType == "Thoruium Fuel Rod" then
-        baseBurnStrength = 2.5
-    elseif fuelRodType == "Fulgarium Fuel Rod" then 
-        baseBurnStrength = 3.5
-    elseif fuelRodType == "Volatile Fulgarium Fuel Rod" then
-        baseBurnStrength = 4
-    end
-    local calculatedBurnStrength = reactorLua.calculateAfflictionStrength(baseBurnStrength,0,1000)
+    local burnStrengthByFuelRod = {
+        ["Thoruium Fuel Rod"] = 2.5,
+        ["Fulgarium Fuel Rod"] = 3.5,
+        ["Volatile Fulgarium Fuel Rod"] = 4
+    }
+    local baseBurnStrength = burnStrengthByFuelRod[fuelRodType] or 1.5
+    local calculatedBurnStrength = reactorLua.calculateAfflictionStrength(baseBurnStrength, 0, 1000)
     playerCharacter.CharacterHealth.ApplyAffliction(limb, burnPrefab.Instantiate(calculatedBurnStrength))
 end
-
 -- applies the affliction for the diffrent fuel rods
-reactorLua.applyAfflictionStrengths =  function(fuelRodType, playerCharacter, distance, maxDistance, isContained, reactorCondition)
-    -- Regular and Thorium
-    local radiationStrength = 1.5
-    local radiationSoundsStrength = 2.5
-    local overheatingStrength = 1.02
-    local contaminatedStrength = 1.5
+reactorLua.applyAfflictionStrengths = function(fuelRodType, playerCharacter, distance, maxDistance, isContained, reactorCondition)
+    local radiationStrength, radiationSoundsStrength, overheatingStrength, contaminatedStrength
     local multiply = 1
-    -- if the fuel rods are within a reactor
-    if(isContained == false) then
-        -- Fulgurium
-        if rodType == "Fulgarium Fuel Rod" then 
-            radiationStrength = 3.75
-            radiationSoundsStrength = 3
-            overheatingStrength = 1.2
-            contaminatedStrength = 3.75
-        -- Volitile fulgurium
-        elseif rodType == "Volatile Fulgarium Fuel Rod" then
-            radiationStrength = 5.4
-            radiationSoundsStrength = 4
-            overheatingStrength = 1.44
-            contaminatedStrength = 5.4
-        end
-    else 
-    -- if fuel rods are not in a reactor and reactor is broken
-        if(reactorCondition <= 50)then -- medium
-            multiply = 2
-        elseif(reactorCondition <=25) then -- large
-            multiply = 3
-        end 
-        -- Regular and Thorium
-        radiationStrength = 0.15 
-        radiationSoundsStrength = 0.9
-        overheatingStrength = 0.06
-        contaminatedStrength = 0.15
-        -- Fulgurium
-        if rodType == "Fulgarium Fuel Rod" then 
-            radiationStrength = 0.225
-            radiationSoundsStrength = 1.9
-            overheatingStrength = 0.15
-            contaminatedStrength = 0.225
-        -- Volitile fulgurium
-        elseif rodType == "Volatile Fulgarium Fuel Rod" then
-            radiationStrength = 0.3
-            radiationSoundsStrength = 1.9
-            overheatingStrength = 0.21
-            contaminatedStrength = 0.3
-        end
-    end
-    -- add afflictions as damage so resistances apply 
     local limb = playerCharacter.AnimController.GetLimb(LimbType.Torso)
-    -- Radiation affliction
-    local radiationResult = limb.AddDamage(limb.SimPosition, 
-    {radiationsickness.Instantiate(
-        reactorLua.calculateAfflictionStrength(radiationStrength * multiply,distance,maxDistance)
-    )}, false, 1, 0.2, nil)
-    playerCharacter.CharacterHealth.ApplyDamage(limb, radiationResult, true)
 
-    -- Overheating affliction
-    local overheatingResult = limb.AddDamage(limb.SimPosition, 
-    {overheating.Instantiate(
-        reactorLua.calculateAfflictionStrength(overheatingStrength * multiply,distance,maxDistance)
-    )}, false, 1, 0.2, nil)
-    playerCharacter.CharacterHealth.ApplyDamage(limb, overheatingResult, true)
+    -- Default Affliction values for Regular and Thorium fuel rods
+    local defaultAfflictions = {
+        radiationStrength = 1.5,
+        radiationSoundsStrength = 2.5,
+        overheatingStrength = 1.02,
+        contaminatedStrength = 1.5
+    }
 
-    -- Radiation Sound Affliction
-    local radiationsoundResult = limb.AddDamage(limb.SimPosition, 
-    {radiationsounds.Instantiate(
-        reactorLua.calculateAfflictionStrength(radiationSoundsStrength * multiply,distance,maxDistance)
-    )}, false, 1, 0.2, nil)
-    playerCharacter.CharacterHealth.ApplyDamage(limb, radiationsoundResult, true)
+    -- Default Affliction values for broken reactor
+    local reactorBrokenAfflictions = {
+        radiationStrength = 0.15,
+        radiationSoundsStrength = 0.9,
+        overheatingStrength = 0.06,
+        contaminatedStrength = 0.15
+    }
 
-    -- Contaminated Affliction
-    local contaminatedResult = limb.AddDamage(limb.SimPosition, 
-    {contaminated.Instantiate(
-        reactorLua.calculateAfflictionStrength(contaminatedStrength * multiply,distance,maxDistance)
-    )}, false, 1, 0.2, nil)
-    playerCharacter.CharacterHealth.ApplyDamage(limb, contaminatedResult, true)
+    -- Afflictions for Fulgarium and Volatile Fulgarium fuel rods
+    local fulguriumAfflictions = {
+        ["Fulgarium Fuel Rod"] = {3.75, 3, 1.2, 3.75},
+        ["Volatile Fulgarium Fuel Rod"] = {5.4, 4, 1.44, 5.4}
+    }
+
+    -- Afflictions for broken reactor with Fulgarium and Volatile Fulgarium fuel rods
+    local reactorBrokenFulguriumAfflictions = {
+        ["Fulgarium Fuel Rod"] = {0.225, 1.9, 0.15, 0.225},
+        ["Volatile Fulgarium Fuel Rod"] = {0.3, 1.9, 0.21, 0.3}
+    }
+
+    -- Set affliction strengths based on containment status
+    if not isContained then
+        -- Use fulgurium or default values
+        radiationStrength, radiationSoundsStrength, overheatingStrength, contaminatedStrength = 
+            table.unpack(fulguriumAfflictions[fuelRodType] or {
+                defaultAfflictions.radiationStrength, 
+                defaultAfflictions.radiationSoundsStrength, 
+                defaultAfflictions.overheatingStrength, 
+                defaultAfflictions.contaminatedStrength
+            })
+    else
+        -- Apply reactor condition multiplier
+        if reactorCondition <= 50 then
+            multiply = reactorCondition <= 25 and 3 or 2
+        end
+        -- Use broken reactor fulgurium or default values
+        radiationStrength, radiationSoundsStrength, overheatingStrength, contaminatedStrength = 
+            table.unpack(reactorBrokenFulguriumAfflictions[fuelRodType] or {
+                reactorBrokenAfflictions.radiationStrength, 
+                reactorBrokenAfflictions.radiationSoundsStrength, 
+                reactorBrokenAfflictions.overheatingStrength, 
+                reactorBrokenAfflictions.contaminatedStrength
+            })
+    end
+
+    -- Helper function to apply afflictions
+    local function applyAffliction(afflictionPrefab, strength)
+        local result = limb.AddDamage(
+            limb.SimPosition, 
+            {afflictionPrefab.Instantiate(reactorLua.calculateAfflictionStrength(strength * multiply, distance, maxDistance))}, 
+            false, 1, 0.2, nil
+        )
+        playerCharacter.CharacterHealth.ApplyDamage(limb, result, true)
+    end
+
+    -- Apply the four afflictions
+    applyAffliction(radiationsickness, radiationStrength)
+    applyAffliction(overheating, overheatingStrength)
+    applyAffliction(radiationsounds, radiationSoundsStrength)
+    applyAffliction(contaminated, contaminatedStrength)
 end
 
 -- calculates the affliction strength based on distance from target
-reactorLua.calculateAfflictionStrength = function(afflictionStrength, distance, range)
-    local distanceStrength 
-    if distance == 0 then
-        distanceStrength = 1
-    else 
-        distanceStrength =  1 - (distance / range)
-    end
-    local afflictionStrength = afflictionStrength
-    return reactorLua.mathsRound(distanceStrength * afflictionStrength, 1)
+reactorLua.calculateAfflictionStrength = function(baseStrength, distance, range)
+    local distanceStrength = (distance == 0) and 
+    1 or 
+    (1 - (distance / range))
+    return reactorLua.mathsRound(distanceStrength * baseStrength, 1)
 end
 
--- Random chance generator
+-- Random chance generator (1 in 20 chance)
 reactorLua.randomFireChance = function()
-    local randomAmount = math.random(1,20);
-    if randomAmount == 18 then 
-        return true 
-        else return false 
-    end
+    return math.random(1, 20) == 18
 end
 
 -- decimal point rounding, where x is the number and n is the ammount of decimal places
