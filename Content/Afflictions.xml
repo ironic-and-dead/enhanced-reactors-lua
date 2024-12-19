@@ -1,7 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Afflictions>
-  <!-- IMMERSIVE REPAIRS COMPATIBILITY -->
   <Override>
+    <Affliction name="Fuel Rod Rage" identifier="fuelrodrage" description="You're overcharged with nuclear power. All sorts of mutations are happening to your body and you only have a very short time to live!" causeofdeathdescription="Died of radiation sickness." selfcauseofdeathdescription="You have died of radiation sickness." type="none" isbuff="true" limbspecific="false" indicatorlimb="Torso" maxstrength="180" iconcolors="0,0,0;50,255,0" showiconthreshold="0" showicontoothersthreshold="0" showinhealthscannerthreshold="0" healableinmedicalclinic="false">
+      <!-- <Description
+        textidentifier="afflictiondescription.oily"
+        minstrength="0"
+        maxstrength="1800"/> -->
+      <Effect minstrength="0" maxstrength="1" strengthchange="-1" mingrainstrength="1.0" maxgrainstrength="1.0" minchromaticaberration="1.0" maxchromaticaberration="1.0" resistancefor="damage,pressure,stun,incrementalstun,gunshotwound,gaze,fractures,arterialcut,t_amputation,s_amputation,pain,surgeryincision,clampedbleeders,retractedskin,poison,resistance,oxygenlow,bloodloss,organdamage,burn,chemaddiction,invertcontrols,nausea,alieninfection,paralysis,bleeding" minresistance="1" maxresistance="1" multiplybymaxvitality="true" minvitalitydecrease="500" maxvitalitydecrease="500">
+        <StatValue stattype="SwimmingSpeed" minvalue="0.25" maxvalue="0.25" />
+        <StatValue stattype="WalkingSpeed" minvalue="0.25" maxvalue="0.25" />
+        <AbilityFlag flagtype="ImmuneToPressure" />
+      </Effect>
+      <Effect minstrength="1" maxstrength="180" strengthchange="-1" mingrainstrength="1.0" maxgrainstrength="1.0" minchromaticaberration="1.0" maxchromaticaberration="1.0" resistancefor="damage,pressure,stun,incrementalstun,gunshotwound,gaze,fractures,arterialcut,t_amputation,s_amputation,pain,surgeryincision,clampedbleeders,retractedskin,poison,resistance,oxygenlow,bloodloss,organdamage,burn,chemaddiction,invertcontrols,nausea,alieninfection,paralysis,bleeding" minresistance="1" maxresistance="1" multiplybymaxvitality="true" minvitalitydecrease="0" maxvitalitydecrease="0">
+        <StatValue stattype="SwimmingSpeed" minvalue="0.25" maxvalue="0.25" />
+        <StatValue stattype="WalkingSpeed" minvalue="0.25" maxvalue="0.25" />
+        <AbilityFlag flagtype="ImmuneToPressure" />
+      </Effect>
+      <icon texture="%ModDir:3045796581%/Content/Items/ER-ItemsAtlas.png" sourcerect="312,95,128,128" color="195,104,60,255" origin="0,0" />
+    </Affliction>
+    <!-- IMMERSIVE REPAIRS COMPATIBILITY -->
     <Oily name="Oily" identifier="oily" description="You're covered in oil. You have a risk of slipping and take twice the amount of burn damage." type="oil" isbuff="false" limbspecific="false" indicatorlimb="Torso" maxstrength="1800" showiconthreshold="0" showicontoothersthreshold="0" showinhealthscannerthreshold="0" healableinmedicalclinic="false">
       <Description textidentifier="afflictiondescription.oily" minstrength="0" maxstrength="1800" />
       <Effect minstrength="0" maxstrength="1800" strengthchange="-1" resistancefor="burn" minresistance="-1" maxresistance="-1" multiplybymaxvitality="true">
@@ -14,10 +31,8 @@
         </StatusEffect>
         -->
       </Effect>
-      <icon texture="%ModDir%/Content/UI/IR-IconsAtlas.png" sourcerect="128,128,128,128" color="195,136,60,255" origin="0,0" />
+      <icon texture="%ModDir:3045796581%/Content/UI/IR-IconsAtlas.png" sourcerect="128,128,128,128" color="195,136,60,255" origin="0,0" />
     </Oily>
-  </Override>
-  <Override>
     <!-- Decontaminate affliction is purely for visual smoke effects to show which player is sprayed at -->
     <Affliction name="Decontaminate" identifier="decontaminate" limbspecific="false" indicatorlimb="Torso" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="1" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="1" strengthchange="-1.0">
@@ -69,19 +84,15 @@
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Check for Radiation" identifier="checkifcontaminated" limbspecific="false" indicatorlimb="Head" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="1" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="1" strengthchange="-1.0">
         <StatusEffect target="Character" duration="0.6">
           <Conditional contaminated="gte 10" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/extremeradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/extremeradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation Sounds " identifier="radiationsounds" limbspecific="false" indicatorlimb="Head" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="6" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="6" strengthchange="0.0">
         <StatusEffect target="Character" interval="0.6" duration="0.6" stackable="true" comparison="And">
@@ -89,81 +100,71 @@
           <Conditional radiationsounds="gte 0.1" />
           <Conditional radiationsounds="lt 1" />
           <ReduceAffliction identifier="radiationsounds" amount="3" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/lowradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/lowradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
         <StatusEffect target="Character" interval="0.6" duration="0.6" stackable="true" comparison="And">
           <Conditional HasStatusTag="hasgeigercounter" />
           <Conditional radiationsounds="gte 1" />
           <Conditional radiationsounds="lt 2" />
           <ReduceAffliction identifier="radiationsounds" amount="3" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/mediumradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/mediumradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
         <StatusEffect target="Character" interval="0.6" duration="0.6" stackable="true" comparison="And">
           <Conditional HasStatusTag="hasgeigercounter" />
           <Conditional radiationsounds="gte 2" />
           <Conditional radiationsounds="lt 3" />
           <ReduceAffliction identifier="radiationsounds" amount="3" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/highradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/highradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
         <StatusEffect target="Character" interval="0.6" duration="0.6" stackable="true" comparison="And">
           <Conditional HasStatusTag="hasgeigercounter" />
           <Conditional radiationsounds="gte 3" />
           <ReduceAffliction identifier="radiationsounds" amount="3" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/extremeradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/extremeradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation Sound (Low)" identifier="radiationsoundlow" limbspecific="false" indicatorlimb="Head" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="2" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="2" strengthchange="-1.9">
         <StatusEffect target="Character" interval="0.5" duration="0.6" comparison="And">
           <!--Conditional IsLocalPlayer="True" /-->
           <Conditional HasStatusTag="hasgeigercounter" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/lowradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/lowradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation Sound (Medium)" identifier="radiationsoundmedium" limbspecific="false" indicatorlimb="Head" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="2" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="2" strengthchange="-1.9" resistancefor="radiationsoundlow" minresistance="1" maxresistance="1">
         <StatusEffect target="Character" interval="0.5" duration="0.6" comparison="And">
           <!--Conditional IsLocalPlayer="True" /-->
           <Conditional HasStatusTag="hasgeigercounter" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/mediumradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/mediumradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation Sound (High)" identifier="radiationsoundhigh" limbspecific="false" indicatorlimb="Head" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="2" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="2" strengthchange="-1.9" resistancefor="radiationsoundlow,radiationsoundmedium" minresistance="1" maxresistance="1">
         <StatusEffect target="Character" interval="0.5" duration="0.6" comparison="And">
           <!--Conditional IsLocalPlayer="True" /-->
           <Conditional HasStatusTag="hasgeigercounter" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/highradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/highradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation Sound (Extreme)" identifier="radiationsoundextreme" limbspecific="false" indicatorlimb="Head" activationthreshold="0" showiconthreshold="1000" showicontoothersthreshold="1000" karmachangeonapplied="0" maxstrength="2" affectmachines="false" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="2" strengthchange="-1.9" resistancefor="radiationsoundlow,radiationsoundmedium,radiationsoundhigh" minresistance="1" maxresistance="1">
         <StatusEffect target="Character" interval="0.5" duration="0.6" comparison="And">
           <!--Conditional IsLocalPlayer="True" /-->
           <Conditional HasStatusTag="hasgeigercounter" />
-          <Sound file="%ModDir%/Content/Sounds/Damage/extremeradiation.ogg" volume="1.0" loop="true" range="350" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Damage/extremeradiation.ogg" volume="1.0" loop="true" range="350" />
         </StatusEffect>
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="256,640,128,128" color="150,26,26,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Heat Stroke Risk" identifier="overheating" description="You're sweating. The surrouning air is way too hot. Better not stay here for too long!" type="burn" showiconthreshold="1.5" showinhealthscannerthreshold="1.5" causeofdeathdescription="Burned to death" selfcauseofdeathdescription="You have burned to death." limbspecific="false" indicatorlimb="Head" maxstrength="10" healableinmedicalclinic="false">
       <Description textidentifier="afflictiondescription.overheating.self" target="Self" minstrength="0" maxstrength="10" />
       <Description textidentifier="afflictiondescription.overheating" target="OtherCharacter" minstrength="0" maxstrength="10" />
@@ -191,10 +192,8 @@
           <ParticleEmitter particle="waterdrop" colormultiplier="255,255,255" copyentityangle="true" particlespersecond="3" anglemin="0" anglemax="360" distancemin="0" distancemax="15" scalemin="0.4" scalemax="0.8" velocitymin="0" velocitymax="10" highqualitycollisiondetection="false" />
         </StatusEffect>
       </Effect>
-      <icon texture="%ModDir%/Content/spritesheet.png" sourcerect="309,95,128,128" color="195,104,60,255" origin="0,0" />
+      <icon texture="%ModDir:3045796581%/Content/Items/ER-ItemsAtlas.png" sourcerect="312,95,128,128" color="195,104,60,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Overheating 2" identifier="applyburn" description="You're sweating. The air in here is way too hot." type="burn" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" causeofdeathdescription="Burned to death" selfcauseofdeathdescription="You have burned to death." limbspecific="false" indicatorlimb="Head" maxstrength="100" healableinmedicalclinic="false">
       <Description textidentifier="afflictiondescription.overheating.low" minstrength="0" maxstrength="30" />
       <Description textidentifier="afflictiondescription.overheating" minstrength="30" maxstrength="60" />
@@ -221,18 +220,14 @@
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="768,640,128,128" color="195,104,60,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation Resistance" identifier="radiationresistance" description="You are more resistant to radiation, however you are not immune to it!" isbuff="true" limbspecific="false" indicatorlimb="Torso" activationthreshold="0" showiconthreshold="0" showicontoothersthreshold="0" showinhealthscannerthreshold="0" karmachangeonapplied="0" maxstrength="900" affectmachines="false" healableinmedicalclinic="false">
       <Description textidentifier="afflictiondescription.radiationresistance" target="Self" minstrength="0" maxstrength="900" />
       <Description textidentifier="afflictiondescription.radiationresistance.others" target="OtherCharacter" minstrength="0" maxstrength="900" />
       <Effect minstrength="0" maxstrength="300" strengthchange="-1.0" resistancefor="radiationsickness,contaminated" minresistance="0.35" maxresistance="0.50" />
       <Effect minstrength="300" maxstrength="600" strengthchange="-1.0" resistancefor="radiationsickness,contaminated" minresistance="0.50" maxresistance="0.50" />
       <Effect minstrength="600" maxstrength="900" strengthchange="-1.0" resistancefor="radiationsickness,contaminated" minresistance="0.50" maxresistance="0.50" />
-      <icon texture="%ModDir%/Content/spritesheet.png" sourcerect="309,223,115,123" color="10,193,114,255" origin="0,0" />
+      <icon texture="%ModDir:3045796581%/Content/Items/ER-ItemsAtlas.png" sourcerect="312,225,115,123" color="10,193,114,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Contaminated" identifier="contaminated" description="You are contaminated and a health hazard to others." type="poison" causeofdeathdescription="Died of radiation sickness." selfcauseofdeathdescription="You have died of radiation sickness." limbspecific="false" indicatorlimb="Torso" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" karmachangeonapplied="-1" treatmentthreshold="4" maxstrength="100" affectmachines="false" grainburst="3" healcostmultiplier="4.0" MedicalSkillGain="1.0">
       <Description textidentifier="afflictiondescription.contaminated" target="OtherCharacter" minstrength="0" maxstrength="50" />
       <Description textidentifier="afflictiondescription.contaminated.high" target="OtherCharacter" minstrength="50" maxstrength="100" />
@@ -279,8 +274,6 @@
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="896,768,128,128" color="195,136,60,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Radiation sickness" identifier="radiationsickness" description="Burns and sores can be seen on patient's skin. They seem to be spreading." type="poison" causeofdeathdescription="Died of radiation sickness." selfcauseofdeathdescription="You have died of radiation sickness." limbspecific="false" indicatorlimb="Torso" showiconthreshold="100" showicontoothersthreshold="1000" showinhealthscannerthreshold="10" karmachangeonapplied="-1" treatmentthreshold="25" maxstrength="200" affectmachines="false" grainburst="3" healcostmultiplier="4.0" MedicalSkillGain="1.0">
       <Description textidentifier="afflictiondescription.radiationsickness.low.self" target="Self" minstrength="0" maxstrength="75" />
       <Description textidentifier="afflictiondescription.radiationsickness.high.self" target="Self" minstrength="75" maxstrength="200" />
@@ -334,8 +327,6 @@
       </Effect>
       <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="896,768,128,128" color="195,136,60,255" origin="0,0" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Irradiate (Low)" identifier="irradiatelow" description="" type="poison" maxstrength="1" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="1" strengthchange="0">
         <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true" interval="1.0" disabledeltatime="true">
@@ -344,8 +335,6 @@
         </StatusEffect>
       </Effect>
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Irradiate (Medium)" identifier="irradiatemedium" description="" type="poison" maxstrength="1" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="1" resistancefor="irradiatelow" minresistance="1" maxresistance="1" strengthchange="0">
         <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true" interval="1.0" disabledeltatime="true">
@@ -354,8 +343,6 @@
         </StatusEffect>
       </Effect>
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Irradiate (High)" identifier="irradiatehigh" description="" type="poison" maxstrength="1" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="1" resistancefor="irradiatelow,irradiatemedium" minresistance="1" maxresistance="1" strengthchange="0">
         <StatusEffect target="Character" multiplyafflictionsbymaxvitality="true" interval="1.0" disabledeltatime="true">
@@ -364,8 +351,6 @@
         </StatusEffect>
       </Effect>
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Shocked" identifier="shocked" description="Bzzzzt" type="debuff" maxstrength="20" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="20" strengthchange="-1">
         <StatusEffect target="Character" interval="0.1" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
@@ -376,36 +361,26 @@
         </StatusEffect>
         <StatusEffect target="Character" interval="1" duration="1.1">
           <Conditional IsLocalPlayer="true" />
-          <Sound file="%ModDir%/Content/Sounds/Ambient/ShockLoop.ogg" volume="5" loop="true" dontmuffle="true" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Ambient/ShockLoop.ogg" volume="5" loop="true" dontmuffle="true" />
         </StatusEffect>
       </Effect>
     </Affliction>
-  </Override>
-  <Override>
     <Affliction identifier="shock1" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="100" afflictionoverlayalphaislinear="true">
       <Effect minstrength="0" maxstrength="100" strengthchange="-300" />
-      <AfflictionOverlay texture="%ModDir%/Content/UI/Shock1.png" />
+      <AfflictionOverlay texture="%ModDir:3045796581%/Content/UI/Shock1.png" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction identifier="shock2" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="100" afflictionoverlayalphaislinear="true">
       <Effect minstrength="0" maxstrength="100" strengthchange="-300" />
-      <AfflictionOverlay texture="%ModDir%/Content/UI/Shock2.png" />
+      <AfflictionOverlay texture="%ModDir:3045796581%/Content/UI/Shock2.png" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction identifier="shock3" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="100" afflictionoverlayalphaislinear="true">
       <Effect minstrength="0" maxstrength="100" strengthchange="-300" />
-      <AfflictionOverlay texture="%ModDir%/Content/UI/Shock3.png" />
+      <AfflictionOverlay texture="%ModDir:3045796581%/Content/UI/Shock3.png" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction identifier="shock4" showiconthreshold="1000" showinhealthscannerthreshold="1000" maxstrength="100" afflictionoverlayalphaislinear="true">
       <Effect minstrength="0" maxstrength="100" strengthchange="-300" />
-      <AfflictionOverlay texture="%ModDir%/Content/UI/Shock4.png" />
+      <AfflictionOverlay texture="%ModDir:3045796581%/Content/UI/Shock4.png" />
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Shocked" identifier="junctionshocked" description="Bzzzzt" type="debuff" maxstrength="20" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="20" strengthchange="-1">
         <StatusEffect target="Character" interval="0.1" disabledeltatime="true" multiplyafflictionsbymaxvitality="true">
@@ -416,7 +391,7 @@
         </StatusEffect>
         <StatusEffect target="Character" interval="1" duration="1.1">
           <Conditional IsLocalPlayer="true" />
-          <Sound file="%ModDir%/Content/Sounds/Ambient/ShockLoop.ogg" volume="5" loop="true" dontmuffle="true" />
+          <Sound file="%ModDir:3045796581%/Content/Sounds/Ambient/ShockLoop.ogg" volume="5" loop="true" dontmuffle="true" />
         </StatusEffect>
         <StatusEffect target="Character" interval="0.8">
           <Conditional InWater="eq false" />
@@ -424,8 +399,6 @@
         </StatusEffect>
       </Effect>
     </Affliction>
-  </Override>
-  <Override>
     <Affliction name="Track Carbon Intake" identifier="trackcarbonintake" description="Tracks how much carbon was consumed and applies damage if taken in too much." type="debuff" maxstrength="301" limbspecific="false" indicatorlimb="Head" showiconthreshold="1000" showicontoothersthreshold="1000" showinhealthscannerthreshold="1000" healableinmedicalclinic="false">
       <Effect minstrength="0" maxstrength="300" strengthchange="-1" />
       <Effect minstrength="300" maxstrength="301" strengthchange="-1">
